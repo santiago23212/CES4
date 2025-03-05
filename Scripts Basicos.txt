@@ -1,7 +1,6 @@
 -- Consultas
 
 --Muestra cada cliente junto con el número de mascotas que posee, o incluso los nombres de sus mascotas. Basico
--- 1. Muestra cada cliente junto con el número de mascotas que posee, o incluso los nombres de sus mascotas
 select c.id_cliente, c.nombre as cliente, count(c.id_cliente) as numero_mascotas, STRING_AGG(m.nombre, ', ') as nombres_mascotas
 	from clientes as c join mascotas as m on c.id_cliente = m.id_cliente
 	group by c.id_cliente, c.nombre
