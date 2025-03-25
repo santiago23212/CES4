@@ -1,36 +1,31 @@
-import java.math.BigInteger;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Mascota {
-    private BigInteger id;
+    private Long id;
     private String nombre;
     private String especie;
-    private Integer edad;
-    private String historial_medico;
+    private LocalDate edad;
+    private String historialMedico;
+    private List<HistorialEstado> historialEstados;
+    private List<AplicacionMedicamento> aplicacionMedicamentos;
 
-    public Mascota() {
-    }
-
-    public Mascota(BigInteger id, String nombre, String especie, Integer edad, String historial_medico) {
+    public Mascota(Long id, String nombre, String especie, LocalDate edad) {
         this.id = id;
         this.nombre = nombre;
         this.especie = especie;
         this.edad = edad;
-        this.historial_medico = historial_medico;
+        this.historialEstados = new ArrayList<>();
+        this.aplicacionMedicamentos = new ArrayList<>();
     }
 
-    public String getHistorial_medico() {
-        return historial_medico;
-    }
-
-    public void setHistorial_medico(String historial_medico) {
-        this.historial_medico = historial_medico;
-    }
-
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -50,12 +45,63 @@ public class Mascota {
         this.especie = especie;
     }
 
-    public Integer getEdad() {
+    public LocalDate getEdad() {
         return edad;
     }
 
-    public void setEdad(Integer edad) {
+    public void setEdad(LocalDate edad) {
         this.edad = edad;
     }
-}
 
+    public String getHistorialMedico() {
+        return historialMedico;
+    }
+
+    public void setHistorialMedico(String historialMedico) {
+        this.historialMedico = historialMedico;
+    }
+
+    @Override
+    public String toString() {
+        return "Mascota{" +
+                "id=" + this.id +
+                ", nombre='" + this.nombre + '\'' +
+                ", especie='" + this.especie + '\'' +
+                ", edad=" + this.edad +
+                ", aplicacionMedicamentos='" + this.aplicacionMedicamentos + '\'' +
+                ", historialEstados=" + this.historialEstados +
+                '}';
+    }
+
+    public List<HistorialEstado> getHistorialEstados() {
+        return historialEstados;
+    }
+
+    public void setHistorialEstados(List<HistorialEstado> historialEstados) {
+        this.historialEstados = historialEstados;
+    }
+
+    public void setHistorialEstado(HistorialEstado historialEstado) {
+        this.historialEstados.add(historialEstado);
+    }
+
+    public void actualizarEstado(HistorialEstado Cambio) {
+        historialEstados.add(Cambio);
+    }
+
+    public List<HistorialEstado> obtenerHistorial() {
+        return historialEstados;
+    }
+
+    public List<AplicacionMedicamento> getAplicacionMedicamentos() {
+        return aplicacionMedicamentos;
+    }
+
+    public void setAplicacionMedicamentos(List<AplicacionMedicamento> aplicacionMedicamentos) {
+        this.aplicacionMedicamentos = aplicacionMedicamentos;
+    }
+
+    public void setAplicacionMedicamento(AplicacionMedicamento aplicacionMedicamento) {
+        this.aplicacionMedicamentos.add(aplicacionMedicamento);
+    }
+}

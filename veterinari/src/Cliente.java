@@ -1,22 +1,29 @@
-import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cliente {
-    //pojo
-    private BigInteger id;
+    private Long id;
     private String nombre;
     private String telefono;
     private String email;
     private String direccion;
+    private List<Mascota> mascotas;
 
-    public Cliente(BigInteger id, String nombre, String telefono, String email, String direccion) {
+    public Cliente(Long id, String nombre, String telefono, String email, String direccion) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
         this.email = email;
         this.direccion = direccion;
+        this.mascotas = new ArrayList<>();
     }
 
-    public Cliente() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -25,14 +32,6 @@ public class Cliente {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public BigInteger getId() {
-        return id;
-    }
-
-    public void setId(BigInteger id) {
-        this.id = id;
     }
 
     public String getTelefono() {
@@ -59,4 +58,34 @@ public class Cliente {
         this.direccion = direccion;
     }
 
+    public List<Mascota> getMascotas() {
+        return mascotas;
+    }
+
+    public void setMascotas(Mascota mascota) {
+        this.mascotas.add(mascota);
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id=" + this.id +
+                ", nombre='" + this.nombre + '\'' +
+                ", telefono='" + this.telefono + '\'' +
+                ", email='" + this.email + '\'' +
+                ", direccion='" + this.direccion + '\'' +
+                ", mascotas=" + this.mascotas +
+                '}';
+    }
+
+    public void registrarMascota(Mascota mascota) {
+        if (mascotas.size() >= 5) {
+            throw new IllegalStateException("Un cliente no puede tener más de 5 mascotas.");
+        }
+        mascotas.add(mascota);
+    }
+
+    public List<Mascota> obtenerMascotas() {
+        return mascotas;
+    }
 }
