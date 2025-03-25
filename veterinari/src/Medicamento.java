@@ -1,28 +1,33 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Medicamento {
-    private Integer id;
+    private Long id;
     private String nombre;
-    private Integer stock;
-    private Double precio;
-    private Date fecha_vencimiento;
+    private int cantidadStock;
+    private double precio;
+    private LocalDate fechaVencimiento;
+    private List<AplicacionMedicamento> aplicacionMedicamentos;
+
+    public Medicamento(Long id, String nombre, int cantidadStock, double precio, LocalDate fechaVencimiento) {
+        this.id = id;
+        this.nombre = nombre;
+        this.cantidadStock = cantidadStock;
+        this.precio = precio;
+        this.fechaVencimiento = fechaVencimiento;
+        this.aplicacionMedicamentos = new ArrayList<>();
+    }
 
     public Medicamento() {
     }
 
-    public Medicamento(Integer id, String nombre, Integer stock, Double precio, Date fecha_vencimiento) {
-        this.id = id;
-        this.nombre = nombre;
-        this.stock = stock;
-        this.precio = precio;
-        this.fecha_vencimiento = fecha_vencimiento;
-    }
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -34,27 +39,62 @@ public class Medicamento {
         this.nombre = nombre;
     }
 
-    public Integer getStock() {
-        return stock;
+    public int getCantidadStock() {
+        return cantidadStock;
     }
 
-    public void setStock(Integer stock) {
-        this.stock = stock;
+    public void setCantidadStock(int cantidadStock) {
+        this.cantidadStock = cantidadStock;
     }
 
-    public Double getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Double precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
-    public Date getFecha_vencimiento() {
-        return fecha_vencimiento;
+    public LocalDate getFechaVencimiento() {
+        return fechaVencimiento;
     }
 
-    public void setFecha_vencimiento(Date fecha_vencimiento) {
-        this.fecha_vencimiento = fecha_vencimiento;
+    public void setFechaVencimiento(LocalDate fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+    public List<AplicacionMedicamento> getAplicacionMedicamentos() {
+        return aplicacionMedicamentos;
+    }
+
+    public void setAplicacionMedicamentos(List<AplicacionMedicamento> aplicacionMedicamentos) {
+        this.aplicacionMedicamentos = aplicacionMedicamentos;
+    }
+
+    public void setAplicacionMedicamento(AplicacionMedicamento aplicacionMedicamento) {
+        this.aplicacionMedicamentos.add(aplicacionMedicamento);
+    }
+
+    public boolean estaVencido() {
+        return this.fechaVencimiento.isAfter(LocalDate.now());
+    }
+
+    public void reducirStock(int cantidad) {
+        if (cantidadStock < cantidad) {
+            throw new IllegalStateException("No hay suficiente stock disponible.");
+        }
+        cantidadStock -= cantidad;
+    }
+
+    @Override
+    public String toString() {
+        return "Medicamento{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", cantidadStock=" + cantidadStock +
+                ", precio=" + precio +
+                ", fechaVencimiento=" + fechaVencimiento +
+                ", aplicacionMedicamentos=" + aplicacionMedicamentos +
+                '}';
     }
 }
