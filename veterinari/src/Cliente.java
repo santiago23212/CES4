@@ -2,14 +2,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
-    private Long id;
+    // pojo
+    private int id;
     private String nombre;
     private String telefono;
     private String email;
     private String direccion;
     private List<Mascota> mascotas;
 
-    public Cliente(Long id, String nombre, String telefono, String email, String direccion) {
+    public Cliente() {
+    }
+
+    public Cliente(int id, String nombre, String telefono, String email, String direccion) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -18,11 +22,11 @@ public class Cliente {
         this.mascotas = new ArrayList<>();
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -62,30 +66,19 @@ public class Cliente {
         return mascotas;
     }
 
-    public void setMascotas(Mascota mascota) {
+    public void addMascota(Mascota mascota) {
         this.mascotas.add(mascota);
     }
 
     @Override
     public String toString() {
         return "Cliente{" +
-                "id=" + this.id +
-                ", nombre='" + this.nombre + '\'' +
-                ", telefono='" + this.telefono + '\'' +
-                ", email='" + this.email + '\'' +
-                ", direccion='" + this.direccion + '\'' +
-                ", mascotas=" + this.mascotas +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", email='" + email + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", mascotas=" + mascotas +
                 '}';
-    }
-
-    public void registrarMascota(Mascota mascota) {
-        if (mascotas.size() >= 5) {
-            throw new IllegalStateException("Un cliente no puede tener más de 5 mascotas.");
-        }
-        mascotas.add(mascota);
-    }
-
-    public List<Mascota> obtenerMascotas() {
-        return mascotas;
     }
 }

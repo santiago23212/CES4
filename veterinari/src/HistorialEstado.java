@@ -1,51 +1,70 @@
 import java.time.LocalDate;
-import java.util.Date;
 
 public class HistorialEstado {
 
-    private Long id;
-    private LocalDate fechaHora;
-    private String comentario;
-
-    public HistorialEstado(Long id, LocalDate fechaHora, String comentario) {
-        this.id = id;
-        this.fechaHora = fechaHora;
-        this.comentario = comentario;
-    }
+    private int id;
+    private LocalDate fechaCambio;
+    private Empleado empleado;
+    private Mascota mascota;
+    private Estado estado;
 
     public HistorialEstado() {
     }
 
-    public Long getId() {
-        return id;
+    public HistorialEstado(int id, LocalDate fechaCambio, Empleado empleado, Mascota mascota, Estado estado) {
+        this.id = id;
+        this.fechaCambio = fechaCambio;
+        this.empleado = empleado;
+        this.mascota = mascota;
+        this.estado = estado;
     }
 
-    public void setId(Long id) {
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
-    public LocalDate getFechaHora() {
-        return fechaHora;
+    public LocalDate getFechaCambio() {
+        return this.fechaCambio;
     }
 
-    public void setFechaHora(LocalDate fechaHora) {
-        this.fechaHora = fechaHora;
+    public void setFechaCambio(LocalDate fechaCambio) {
+        this.fechaCambio = fechaCambio;
     }
 
-    public String getComentario() {
-        return comentario;
+    public Empleado getEmpleado() {
+        return this.empleado;
     }
 
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    public Mascota getMascota() {
+        return this.mascota;
+    }
+
+    public void setMascota(Mascota mascota) {
+        this.mascota = mascota;
+    }
+
+    public Estado getEstado() {
+        return this.estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
         return "HistorialEstado{" +
                 "id=" + id +
-                ", fechaHora=" + fechaHora +
-                ", comentario='" + comentario + '\'' +
+                ", fechaCambio=" + fechaCambio +
+                ", estado=" + (estado != null ? estado.getId() : "null") +
                 '}';
     }
 }

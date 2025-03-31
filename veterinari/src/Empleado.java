@@ -1,50 +1,60 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class Empleado {
-    private Long id;
-    private String nombre;
-    private String rol;
-    private String horario;
-    private String especialidad;
 
-    private List<AplicacionMedicamento> aplicacionMedicamentos;
+    private int id;
+    private String nombre;
+    private String puesto;
+    private List<Aplicacion> aplicaciones;
     private List<HistorialEstado> historialEstados;
 
     public Empleado() {
     }
 
-    public Empleado(Long id, String nombre, String rol, String horario, String especialidad) {
+    public Empleado(int id, String nombre, String puesto) {
         this.id = id;
         this.nombre = nombre;
-        this.rol = rol;
-        this.horario = horario;
-        this.especialidad = especialidad;
-        this.aplicacionMedicamentos = new ArrayList<>();
-        this.historialEstados = new ArrayList<>();
+        this.puesto = puesto;
     }
 
-    public boolean esVeterinario() {
-        return "Veterinario".equalsIgnoreCase(rol);
+    public int getId() {
+        return this.id;
     }
 
-    public boolean esAdmin() {
-        return "Admin".equalsIgnoreCase(rol);
-    }
-    public void setHistorialEstado(HistorialEstado historialEstado) {
-        this.historialEstados.add(historialEstado);
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public List<AplicacionMedicamento> getAplicacionMedicamentos() {
-        return aplicacionMedicamentos;
+    public String getNombre() {
+        return this.nombre;
     }
 
-    public void setAplicacionMedicamentos(List<AplicacionMedicamento> aplicacionMedicamentos) {
-        this.aplicacionMedicamentos = aplicacionMedicamentos;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setAplicacionMedicamento(AplicacionMedicamento aplicacionMedicamento) {
-        this.aplicacionMedicamentos.add(aplicacionMedicamento);
+    public String getPuesto() {
+        return this.puesto;
+    }
+
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
+    }
+
+    public List<Aplicacion> getAplicaciones() {
+        return this.aplicaciones;
+    }
+
+    public void setAplicaciones(List<Aplicacion> aplicaciones) {
+        this.aplicaciones = aplicaciones;
+    }
+
+    public List<HistorialEstado> getHistorialEstados() {
+        return this.historialEstados;
+    }
+
+    public void setHistorialEstados(List<HistorialEstado> historialEstados) {
+        this.historialEstados = historialEstados;
     }
 
     @Override
@@ -52,11 +62,7 @@ public class Empleado {
         return "Empleado{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
-                ", rol='" + rol + '\'' +
-                ", horario='" + horario + '\'' +
-                ", especialidad='" + especialidad + '\'' +
-                ", aplicacionMedicamentos=" + aplicacionMedicamentos +
-                ", historialEstados=" + historialEstados +
+                ", puesto='" + puesto + '\'' +
                 '}';
     }
 }
