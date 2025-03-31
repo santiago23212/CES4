@@ -1,31 +1,31 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Mascota {
-    private Long id;
-    private String nombre;
-    private String especie;
-    private LocalDate edad;
-    private String historialMedico;
-    private List<HistorialEstado> historialEstados;
-    private List<AplicacionMedicamento> aplicacionMedicamentos;
 
-    public Mascota(Long id, String nombre, String especie, LocalDate edad) {
-        this.id = id;
-        this.nombre = nombre;
-        this.especie = especie;
-        this.edad = edad;
-        this.historialEstados = new ArrayList<>();
-        this.aplicacionMedicamentos = new ArrayList<>();
+    private int id;
+    private String nombre;
+    private String tipo;
+    private LocalDate fechaNacimiento;
+    private Cliente cliente;
+    private List<Aplicacion> aplicaciones;
+    private List<HistorialEstado> historialEstados;
+
+    public Mascota() {
     }
 
-    public Long getId() {
+    public Mascota(int id, String nombre, String tipo, LocalDate fechaNacimiento) {
+        this.id = id;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -37,71 +37,53 @@ public class Mascota {
         this.nombre = nombre;
     }
 
-    public String getEspecie() {
-        return especie;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setEspecie(String especie) {
-        this.especie = especie;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public LocalDate getEdad() {
-        return edad;
+    public LocalDate getFechaNacimiento() {
+        return this.fechaNacimiento;
     }
 
-    public void setEdad(LocalDate edad) {
-        this.edad = edad;
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getHistorialMedico() {
-        return historialMedico;
+    public List<Aplicacion> getAplicaciones() {
+        return this.aplicaciones;
     }
 
-    public void setHistorialMedico(String historialMedico) {
-        this.historialMedico = historialMedico;
-    }
-
-    @Override
-    public String toString() {
-        return "Mascota{" +
-                "id=" + this.id +
-                ", nombre='" + this.nombre + '\'' +
-                ", especie='" + this.especie + '\'' +
-                ", edad=" + this.edad +
-                ", aplicacionMedicamentos='" + this.aplicacionMedicamentos + '\'' +
-                ", historialEstados=" + this.historialEstados +
-                '}';
+    public void setAplicaciones(List<Aplicacion> aplicaciones) {
+        this.aplicaciones = aplicaciones;
     }
 
     public List<HistorialEstado> getHistorialEstados() {
-        return historialEstados;
+        return this.historialEstados;
     }
 
     public void setHistorialEstados(List<HistorialEstado> historialEstados) {
         this.historialEstados = historialEstados;
     }
 
-    public void setHistorialEstado(HistorialEstado historialEstado) {
-        this.historialEstados.add(historialEstado);
+    @Override
+    public String toString() {
+        return "Mascota{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", fechaNacimiento='" + fechaNacimiento + '\'' +
+                '}';
     }
 
-    public void actualizarEstado(HistorialEstado Cambio) {
-        historialEstados.add(Cambio);
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public List<HistorialEstado> obtenerHistorial() {
-        return historialEstados;
-    }
-
-    public List<AplicacionMedicamento> getAplicacionMedicamentos() {
-        return aplicacionMedicamentos;
-    }
-
-    public void setAplicacionMedicamentos(List<AplicacionMedicamento> aplicacionMedicamentos) {
-        this.aplicacionMedicamentos = aplicacionMedicamentos;
-    }
-
-    public void setAplicacionMedicamento(AplicacionMedicamento aplicacionMedicamento) {
-        this.aplicacionMedicamentos.add(aplicacionMedicamento);
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

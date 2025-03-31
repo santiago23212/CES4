@@ -1,27 +1,29 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class Estado {
-    private Long id;
+
+    private int id;
     private String nombre;
     private List<HistorialEstado> historialEstados;
 
-    public Estado(Long id, String nombre) {
+    public Estado() {
+    }
+
+    public Estado(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
-        this.historialEstados = new ArrayList<>();
     }
 
-    public Long getId() {
-        return id;
+    public int getId() {
+        return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public void setNombre(String nombre) {
@@ -29,19 +31,11 @@ public class Estado {
     }
 
     public List<HistorialEstado> getHistorialEstados() {
-        return historialEstados;
+        return this.historialEstados;
     }
 
     public void setHistorialEstados(List<HistorialEstado> historialEstados) {
         this.historialEstados = historialEstados;
-    }
-
-    public void setHistorialEstado(HistorialEstado historialEstado) {
-        this.historialEstados.add(historialEstado);
-    }
-
-    public HistorialEstado UltimoEstado(){
-        return this.historialEstados.get(this.historialEstados.size()-1);
     }
 
     @Override
@@ -49,7 +43,6 @@ public class Estado {
         return "Estado{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
-                ", historialEstados=" + historialEstados +
                 '}';
     }
 }
